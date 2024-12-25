@@ -22,7 +22,15 @@ def prune_transcripts(transcripts, min_length=4):
 
 
 def pad_wav(wav, wav_max_length, pad=0):
-    """Pads audio wave sequence to be `wav_max_length` long."""
+    """Pads audio wave sequence to be `wav_max_length` long. 
+    Args:
+        wav: numpy array of shape (time, dim)
+        wav_max_length: maximum length of the wave sequence
+        pad: padding value
+    returns:
+        padded: numpy array of shape (wav_max_length, dim)
+        length: length of the original wav
+    """
     dim = wav.shape[1]
     padded = np.zeros((wav_max_length, dim)) + pad
     if len(wav) > wav_max_length:
